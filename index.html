@@ -1,80 +1,134 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Valentine</title>
+<title>My Valentine</title>
+
 <style>
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        background: #ffe6f0;
-        font-family: Arial, sans-serif;
-        text-align: center;
-    }
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff9a9e, #fecfef);
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+    text-align: center;
+}
 
-    .container {
-        background: white;
-        padding: 40px;
-        border-radius: 20px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    }
+.container {
+    background: white;
+    padding: 50px;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    position: relative;
+    z-index: 2;
+}
 
-    h1 {
-        font-size: 28px;
-        margin-bottom: 30px;
-    }
+h1 {
+    font-size: 32px;
+    color: #ff3366;
+    margin-bottom: 40px;
+}
 
-    button {
-        padding: 10px 25px;
-        font-size: 16px;
-        margin: 10px;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        transition: 0.3s ease;
-    }
+button {
+    padding: 12px 30px;
+    font-size: 18px;
+    margin: 10px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
 
-    .yes {
-        background-color: #ff4d88;
-        color: white;
-    }
+.yes {
+    background: #ff3366;
+    color: white;
+}
 
-    .yes:hover {
-        background-color: #ff1a66;
-    }
+.yes:hover {
+    transform: scale(1.1);
+}
 
-    .no {
-        background-color: #ccc;
-    }
+.no {
+    background: #ddd;
+    position: absolute;
+}
 
-    #message {
-        margin-top: 20px;
-        font-weight: bold;
-        color: #ff1a66;
+#message {
+    margin-top: 25px;
+    font-size: 22px;
+    color: #ff3366;
+    font-weight: bold;
+}
+
+/* Floating hearts */
+.heart {
+    position: absolute;
+    color: #ff4d88;
+    font-size: 20px;
+    animation: float 6s linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 0;
     }
+    20% { opacity: 1; }
+    100% {
+        transform: translateY(-10vh) scale(1.5);
+        opacity: 0;
+    }
+}
 </style>
 </head>
+
 <body>
 
 <div class="container">
-    <h1>Would you be my valentine Maggie Ji?</h1>
-    <button class="yes" onclick="sayYes()">Yes</button>
-    <button class="no" onclick="sayNo()">No</button>
+    <h1>Would you be my valentine Maggie Ji? ❤️</h1>
+    <button class="yes" onclick="sayYes()">Yes 💖</button>
+    <button class="no" id="noBtn">No</button>
     <div id="message"></div>
 </div>
 
 <script>
-    function sayYes() {
-        document.getElementById("message").innerText = "Yay! ❤️";
-    }
+const noBtn = document.getElementById("noBtn");
+const message = document.getElementById("message");
 
-    function sayNo() {
-        document.getElementById("message").innerText = "Chando Tiso";
-    }
+// Make "No" button run away
+noBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+    message.innerText = "Chando Tiso 😜";
+});
+
+// Yes button celebration
+function sayYes() {
+    message.innerText = "You just made me the happiest person alive ❤️✨";
+}
+
+// Floating hearts generator
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerText = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+setInterval(createHeart, 400);
 </script>
 
 </body>

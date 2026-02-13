@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine</title>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background: #ffe6f0;
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+
+    .container {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+
+    button {
+        padding: 10px 25px;
+        font-size: 16px;
+        margin: 10px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 0.3s ease;
+    }
+
+    .yes {
+        background-color: #ff4d88;
+        color: white;
+    }
+
+    .yes:hover {
+        background-color: #ff1a66;
+    }
+
+    .no {
+        background-color: #ccc;
+    }
+
+    #message {
+        margin-top: 20px;
+        font-weight: bold;
+        color: #ff1a66;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Would you be my valentine Maggie Ji?</h1>
+    <button class="yes" onclick="sayYes()">Yes</button>
+    <button class="no" onclick="sayNo()">No</button>
+    <div id="message"></div>
+</div>
+
+<script>
+    function sayYes() {
+        document.getElementById("message").innerText = "Yay! ❤️";
+    }
+
+    function sayNo() {
+        document.getElementById("message").innerText = "Chando Tiso";
+    }
+</script>
+
+</body>
+</html>
